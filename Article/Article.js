@@ -85,6 +85,22 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'React: What\'s the big deal?',
+    date: 'Sep 4, 2019',
+    firstParagraph: `Hodor hodor HODOR! Hodor hodor - hodor, hodor. Hodor hodor... Hodor hodor hodor; hodor hodor. Hodor hodor hodor, hodor, hodor
+          hodor. Hodor, hodor. Hodor. Hodor, hodor - hodor... Hodor hodor hodor; hodor HODOR hodor, hodor hodor?! Hodor hodor, hodor.
+          Hodor hodor hodor hodor hodor! Hodor hodor - HODOR hodor, hodor hodor hodor hodor hodor; hodor hodor? `,
+
+    secondParagraph: `Hodor, hodor. Hodor. Hodor, hodor, hodor. Hodor hodor, hodor. Hodor hodor, hodor, hodor hodor. Hodor! Hodor hodor, hodor;
+          hodor hodor hodor? Hodor, hodor. Hodor. Hodor, hodor - HODOR hodor, hodor hodor hodor! Hodor, hodor. Hodor. Hodor, HODOR
+          hodor, hodor hodor, hodor, hodor hodor. Hodor hodor - hodor - hodor... Hodor hodor hodor hodor hodor hodor hodor?! Hodor
+          hodor - hodor hodor hodor. Hodor. Hodor hodor... Hodor hodor hodor hodor hodor? `,
+
+    thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
+          Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
+          Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
   }
 ];
 
@@ -103,3 +119,50 @@ const data = [
   Step 4: Map over the data, creating a component for each oject and add each component to the DOM as children of the 'articles' div.
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 */
+
+
+const articlesDiv = document.querySelector(".articles")
+
+function createComponent (title, date, firstParagraph, secondParagraph, thirdParagraph) {
+ //Step 1 - defined new elements
+ const newsArticle = document.createElement('div');
+ const h2 = document.createElement('h2');
+ const dates = document.createElement('p');
+ const p1 = document.createElement('p');
+ const p2 = document.createElement('p');
+ const p3 = document.createElement('p');
+ const expand = document.createElement('span');
+
+ // Structure of elements
+ newsArticle.appendChild(h2);
+ newsArticle.appendChild(dates);
+ newsArticle.appendChild(p1);
+ newsArticle.appendChild(p2);
+ newsArticle.appendChild(p3);
+ newsArticle.appendChild(expand);
+
+ articlesDiv.classList.add('art');
+ dates.classList.add('date');
+ expand.classList.add('e-button');
+
+ h2.textContent = title;
+ dates.textContent = date;
+ p1.textContent = firstParagraph;
+ p2.textContent = secondParagraph;
+ p3.textContent = thirdParagraph;
+ expand.textContent = "expand";
+
+
+ // Step 2 - Added event listener to expand button
+  expand.addEventListener('click', event => {
+    console.log("clicked");
+    expand.classList.toggle('article-open');
+  })
+  return newsArticle
+}
+
+
+
+  data.forEach(content => {
+  articlesDiv.appendChild(createComponent(content.title, content.date, content.firstParagraph, content.secondParagraph, content.thirdParagraph))
+})
