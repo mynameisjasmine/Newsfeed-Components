@@ -132,6 +132,21 @@ function createComponent (title, date, firstParagraph, secondParagraph, thirdPar
  const p2 = document.createElement('p');
  const p3 = document.createElement('p');
  const expand = document.createElement('span');
+ const close = document.createElement('span');
+
+ 
+ newsArticle.classList.add('article');
+ dates.classList.add('date');
+ expand.classList.add('expandButton');
+close.classList.add('expandButton', 'hide');
+
+ h2.textContent = title;
+ dates.textContent = date;
+ p1.textContent = firstParagraph;
+ p2.textContent = secondParagraph;
+ p3.textContent = thirdParagraph;
+ expand.textContent = "expand";
+ close.textContent = "close";
 
  // Structure of elements
  newsArticle.appendChild(h2);
@@ -140,24 +155,23 @@ function createComponent (title, date, firstParagraph, secondParagraph, thirdPar
  newsArticle.appendChild(p2);
  newsArticle.appendChild(p3);
  newsArticle.appendChild(expand);
-
- articlesDiv.classList.add('art');
- dates.classList.add('date');
- expand.classList.add('e-button');
-
- h2.textContent = title;
- dates.textContent = date;
- p1.textContent = firstParagraph;
- p2.textContent = secondParagraph;
- p3.textContent = thirdParagraph;
- expand.textContent = "expand";
+ newsArticle.appendChild(close);
+ 
 
 
- // Step 2 - Added event listener to expand button
-  expand.addEventListener('click', event => {
+ // Added event listener to expand button
+ expand.addEventListener('click', event => {
     console.log("clicked");
-    expand.classList.toggle('article-open');
+    // expand.classList.toggle('hide')
+    // close.classList.toggle('hide')
+    
+    newsArticle.classList.toggle('article-open');
+    
+    
+  
   })
+
+  
   return newsArticle
 }
 

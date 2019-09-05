@@ -94,13 +94,19 @@
 }
 .article .expandButton {
   position: absolute;
+  border-bottom: 1px solid gray;
+  border-right: 1px solid gray;
+  border-left: 1px solid gray;
   bottom: 0;
   left: 50%;
   font-size: 12px;
   color: grey;
   cursor: pointer;
   transform: translate(-50%);
-  background-color: white;
+  background-color: #ece4e4;
+}
+.article .hide {
+  display: none;
 }
 .article-open {
   height: 400px;

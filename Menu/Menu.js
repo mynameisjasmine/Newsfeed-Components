@@ -26,13 +26,37 @@ let menuItems = [
   
 */
 
-function menuComponent (array) {
+let menuButton = document.querySelector(".menu-button");
+
+function menuComponent(array) {
+  
+  //created elements
    const menu = document.createElement('div');
    const ul =  document.createElement('ul');
-   const students = document.createElement('li');
-   const faculty = document.createElement('li');
-   const whatsNew = document.createElement('li');
-   const techTrends = document.createElement('li');
-   const music = document.createElement('li');
-   const logOut = document.createElement('li');
-}
+
+   //Added class to menu div
+   menu.classList.add('menu')
+
+   menu.appendChild(ul);
+   
+
+   //Looped through the array
+   array.forEach(list => {
+      const item = document.createElement('li');
+     item.textContent = list;
+     ul.appendChild(item);
+
+   });
+   
+
+   //Added event listener
+   menuButton.addEventListener('click', event => {
+     console.log('clicked');
+     menu.classList.toggle('menu--open')
+   })
+   
+   return menu
+};
+
+let header = document.querySelector(".header");
+header.appendChild(menuComponent(menuItems));
